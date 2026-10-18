@@ -11,7 +11,7 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 | Projet | Objectif | Axes techniques |
 | --- | --- | --- |
 | [Infra](#infra) | Mutualiser l’infrastructure des applications | Docker, Traefik, S3, PostgreSQL, Redis, CI/CD |
-| [Masterflow](#masterflow) | Transformer un ticket en modification de code vérifiée | Agents IA, CLI, workflow déterministe, intégrations Git |
+| [Masterflow](#masterflow) | Relier diagnostic SEO, plan d’action et développement assisté | Agents IA, analyse SEO, données Google, workflows persistants |
 | [Jobs4u](#jobs4u) | Accompagner la recherche d’emploi | Agrégation d’offres, matching, agents IA, OAuth |
 | [Intimity](#intimity) | Réunir live vidéo, contenus et boutique de créatrices | DDD, architecture hexagonale, WebRTC, transactions |
 | [OryanHair](#oryanhair) | Présenter un salon et proposer une assistance vocale | React, SEO local, reconnaissance vocale, LLM, synthèse vocale |
@@ -31,8 +31,12 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 
 ### Masterflow
 
-**Orchestration d’agents IA pour le développement.** Un orchestrateur qui prend en charge le cycle **ticket → code → contrôles qualité → commit → pull request**, depuis une CLI, un terminal web ou une API.
+**Analyse SEO et orchestration d’agents IA.** Une plateforme qui réunit le diagnostic de sites et le développement assisté : **analyse SEO → plan d’action → tickets**, puis **ticket → code → contrôles qualité → commit → pull request**. Le module SEO, issu de SeoMaster, partage les comptes et projets de Masterflow.
 
+- **Diagnostic SEO assisté par IA** : cadrage métier, découverte et qualification des concurrents, intentions et mots-clés, concurrence Google, comparaison des pages publiques et plan d’action sourcé.
+- **Données et mesures SEO** : connecteurs Search Console, GA4, PageSpeed Insights et Google Ads Keyword Planner ; résultats de recherche via SerpAPI avec secours OpenSERP. Les synchronisations et audits sont distincts du workflow, qui exploite les données disponibles sans inventer les sources absentes.
+- **Analyses persistantes** : worker avec bail renouvelable PostgreSQL, cadrage et preuves conservés par run, budgets de collecte et d’appels agent, pause/reprise après interruption. Tableau de bord, alertes et suivi manuel de présence locale complètent les analyses.
+- **Du SEO au développement** : export du plan ou création explicite de tickets dans le backlog du projet avec dédoublonnage, puis traitement par les agents. L’analyse ne publie pas automatiquement de modification du site.
 - **Workflow déterministe** : étapes explicites pour charger le ticket, préparer la branche, lancer l’agent, contrôler les changements et ouvrir la PR/MR. Les échecs de lint, tests ou analyse statique alimentent une boucle de correction bornée.
 - **Agents interchangeables** : intégration des CLI de Codex, Claude, Copilot, Cursor et d’autres agents, avec les sessions des utilisateurs. Le même workflow sert aux exécutions interactives et en arrière-plan.
 - **Intégrations de forges et backlogs** : GitHub, GitLab et Azure DevOps ; détection du dépôt et de sa stack, analyse de dette technique et revue de PR.
@@ -40,7 +44,7 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 - **Exécution et secrets** : workers exécutés sous l’identité système du demandeur, configuration centralisée et chiffrement AES-256-GCM des secrets en base.
 - **Livraison** : tests automatisés, images Docker identifiées par le SHA du commit, tests de démarrage des images avant publication dans GHCR et contrôles après déploiement.
 
-**Stack :** JavaScript ESM · TypeScript · Node.js · NestJS · React · Vite · Prisma · PostgreSQL · WebSocket · Docker · GitHub Actions
+**Stack :** JavaScript ESM · TypeScript · Node.js · NestJS · React · Vite · Prisma · PostgreSQL · WebSocket · Search Console · GA4 · PageSpeed Insights · Google Ads · SerpAPI/OpenSERP · Docker · GitHub Actions
 
 [Site](https://masterflow.dev)
 
@@ -113,7 +117,7 @@ Les parcours de paiement et de vérification d’identité dépendent aussi de l
 | Axe | Mise en pratique |
 | --- | --- |
 | **Architecture métier** | DDD, agrégats, objets valeur, cas d’usage, ports et adaptateurs ; monolithes modulaires organisés par contexte métier. |
-| **IA & agents** | Orchestration de CLI d’agents, boucles de correction guidées par les tests, préparation d’entretiens et chaîne vocale STT → LLM → TTS. |
+| **IA & agents** | Orchestration de CLI d’agents, boucles de correction guidées par les tests, diagnostics et plans SEO sourcés, préparation d’entretiens et chaîne vocale STT → LLM → TTS. |
 | **Cloud & auto-hébergement** | Applications conteneurisées sur VPS, stockage compatible S3, Amazon SES et intégration événementielle Google Cloud Pub/Sub. |
 | **CI/CD** | GitHub Actions, runners auto-hébergés, GHCR, images identifiées par commit, migrations et vérifications de démarrage selon les projets. |
 | **Données & asynchronisme** | PostgreSQL, Prisma, isolation par tenant, transactions, idempotence, files Redis/Bull et pg-boss. |
