@@ -6,6 +6,8 @@ Je conçois et développe des projets personnels de bout en bout : modélisation
 
 Mes projets sont un terrain d’application pour construire des logiciels maintenables : isoler les règles métier, rendre les intégrations remplaçables, automatiser la qualité et maîtriser le déploiement comme les données.
 
+**[Mon CV et mon parcours](https://quintard.dev)**
+
 ## Mes principaux projets
 
 | Projet | Objectif | Axes techniques |
