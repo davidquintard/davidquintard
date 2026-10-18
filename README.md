@@ -29,8 +29,6 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 
 **Stack :** Docker · Docker Compose · Traefik · PostgreSQL · Redis · Garage/S3 · Authelia · coturn · GitHub Actions · Shell
 
-[Dépôt](https://github.com/davidquintard/infra)
-
 ### Masterflow
 
 **Orchestration d’agents IA pour le développement.** Un orchestrateur qui prend en charge le cycle **ticket → code → contrôles qualité → commit → pull request**, depuis une CLI, un terminal web ou une API.
@@ -44,7 +42,7 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 
 **Stack :** JavaScript ESM · TypeScript · Node.js · NestJS · React · Vite · Prisma · PostgreSQL · WebSocket · Docker · GitHub Actions
 
-[Dépôt](https://github.com/davidquintard/masterflow) · [Site](https://masterflow.dev)
+[Site](https://masterflow.dev)
 
 ### Jobs4u
 
@@ -59,7 +57,7 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 
 **Stack :** Nx · TypeScript · NestJS · React · Vite · PostgreSQL · OAuth 2.0/OIDC · Google Cloud Pub/Sub · MediaPipe · Docker · GitHub Actions
 
-[Dépôt](https://github.com/davidquintard/jobs4u) · [Site](https://jobs4u.fr)
+[Site](https://jobs4u.fr)
 
 ### Intimity
 
@@ -77,7 +75,7 @@ Les parcours de paiement et de vérification d’identité dépendent aussi de l
 
 **Stack :** Nx · TypeScript · Angular · NestJS · Prisma · PostgreSQL · LiveKit/WebRTC · SSE · Garage/S3 · pg-boss · Amazon SES · Playwright
 
-[Dépôt](https://github.com/davidquintard/intimity) · [Site](https://intimity.fr)
+[Site](https://intimity.fr)
 
 ### OryanHair
 
@@ -92,7 +90,7 @@ Les parcours de paiement et de vérification d’identité dépendent aussi de l
 
 **Stack :** React · TypeScript · Vite · Tailwind CSS · shadcn/ui · Node.js/Express · Python/FastAPI · faster-whisper · Ollama · Piper · Nginx · Docker
 
-[Dépôt](https://github.com/davidquintard/oryanhair) · [Site](https://www.oryanhair.fr)
+[Site](https://www.oryanhair.fr)
 
 ### Missebony
 
@@ -108,7 +106,7 @@ Les parcours de paiement et de vérification d’identité dépendent aussi de l
 
 **Stack :** Nx · TypeScript · Angular · Ionic · Capacitor · NestJS · Prisma · PostgreSQL · Redis/Bull · Socket.IO · WebRTC · Garage/S3 · Prometheus
 
-[Dépôt Pangoria](https://github.com/davidquintard/pangoria) · [Site](https://www.missebony.fr)
+[Site](https://www.missebony.fr)
 
 ## Les pratiques que je développe au fil de ces projets
 
