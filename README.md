@@ -13,7 +13,7 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 | Projet | Objectif | Axes techniques |
 | --- | --- | --- |
 | [Infra](#infra) | Mutualiser l’infrastructure des applications | Docker, Traefik, S3, PostgreSQL, Redis, CI/CD |
-| [Masterflow](#masterflow) | Relier diagnostic SEO, plan d’action et développement assisté | Agents IA, analyse SEO, données Google, workflows persistants |
+| [Masterflow](#masterflow) | Relier diagnostic SEO, plan d’action, développement assisté et orchestration multi-LLM (BYOK) | Agents IA (CLI & REST), BYOK chiffré, analyse SEO, données Google, workflows persistants |
 | [Jobs4u](#jobs4u) | Accompagner la recherche d’emploi | Agrégation d’offres, matching, agents IA, OAuth |
 | [Intimity](#intimity) | Réunir live vidéo, contenus et boutique de créatrices | DDD, architecture hexagonale, WebRTC, transactions |
 | [OryanHair](#oryanhair) | Présenter un salon et proposer une assistance vocale | React, SEO local, reconnaissance vocale, LLM, synthèse vocale |
@@ -33,20 +33,20 @@ Mes projets sont un terrain d’application pour construire des logiciels mainte
 
 ### Masterflow
 
-**Analyse SEO et orchestration d’agents IA.** Une plateforme qui réunit le diagnostic de sites et le développement assisté : **analyse SEO → plan d’action → tickets**, puis **ticket → code → contrôles qualité → commit → pull request**. Le module SEO, issu de SeoMaster, partage les comptes et projets de Masterflow.
+**Analyse SEO et orchestration d’agents IA.** Une plateforme qui réunit le diagnostic de sites, la planification stratégique et le développement assisté : **analyse SEO → plan d’action → tickets**, puis **ticket → code → contrôles qualité → commit → pull request**. Le module SEO, issu de SeoMaster, partage les comptes et projets de Masterflow.
 
-- **Diagnostic SEO assisté par IA** : cadrage métier, découverte et qualification des concurrents, intentions et mots-clés, concurrence Google, comparaison des pages publiques et plan d’action sourcé.
-- **Données et mesures SEO** : connecteurs Search Console, GA4, PageSpeed Insights et Google Ads Keyword Planner ; résultats de recherche via SerpAPI avec secours OpenSERP. Les synchronisations et audits sont distincts du workflow, qui exploite les données disponibles sans inventer les sources absentes.
-- **Analyses persistantes** : worker avec bail renouvelable PostgreSQL, cadrage et preuves conservés par run, budgets de collecte et d’appels agent, pause/reprise après interruption. Tableau de bord, alertes et suivi manuel de présence locale complètent les analyses.
-- **Du SEO au développement** : export du plan ou création explicite de tickets dans le backlog du projet avec dédoublonnage, puis traitement par les agents. L’analyse ne publie pas automatiquement de modification du site.
-- **Workflow déterministe** : étapes explicites pour charger le ticket, préparer la branche, lancer l’agent, contrôler les changements et ouvrir la PR/MR. Les échecs de lint, tests ou analyse statique alimentent une boucle de correction bornée.
-- **Agents interchangeables** : intégration des CLI de Codex, Claude, Copilot, Cursor et d’autres agents, avec les sessions des utilisateurs. Le même workflow sert aux exécutions interactives et en arrière-plan.
+- **Diagnostic et Atelier SEO assistés par IA** : cadrage métier, qualification des concurrents, intentions de recherche et mots-clés, comparaison sémantique et plan d’action sourcé. L’Atelier SEO intègre l’optimisation de contenu et la génération de pitchs outreach assistées par IA (sorties structurées `json_schema` / `json_object`).
+- **Orchestration d’agents hybrides & passerelles BYOK** : exécution locale d’agents CLI (Antigravity, ZCode, Codex, Claude, Copilot, Cursor) et support de clés API distantes compatibles OpenAI (BYOK : OVHcloud AI Endpoints, OpenAI, Mistral, OpenRouter, Scaleway, endpoints privés vLLM).
+- **Découverte dynamique de modèles (ModelPicker)** : interrogation à chaud des catalogues distants (`GET /models`), mise en cache, composant d’interface avec filtre textuel instantané et repli sur identifiant personnalisé.
+- **Données et mesures SEO** : connecteurs Search Console, GA4, PageSpeed Insights et Google Ads Keyword Planner ; résultats de recherche via SerpAPI avec secours OpenSERP. Les synchronisations et audits exploitent les données disponibles sans inventer les sources absentes.
+- **Analyses persistantes & résilience** : worker avec bail renouvelable PostgreSQL, cadrage et preuves conservés par run, budgets de collecte et d’appels agent, réconciliation de conflits de branches Git et reprise transparente après incident.
+- **Workflow déterministe** : étapes explicites pour charger le ticket, préparer la branche, lancer l’agent, contrôler les changements et ouvrir la PR/MR avec boucle d’auto-correction bornée.
 - **Intégrations de forges et backlogs** : GitHub, GitLab et Azure DevOps ; détection du dépôt et de sa stack, analyse de dette technique et revue de PR.
+- **Sécurité & souveraineté** : chiffrement AES-256-GCM des clés API et secrets en base, protection anti-SSRF sur les URL de fournisseurs distants, isolation sous l’identité système du demandeur.
 - **Architecture modulaire** : monorepo séparant CLI, assemblage des prompts, contrats partagés, API NestJS et interface React. Suivi des exécutions et journaux en temps réel via WebSocket.
-- **Exécution et secrets** : workers exécutés sous l’identité système du demandeur, configuration centralisée et chiffrement AES-256-GCM des secrets en base.
 - **Livraison** : tests automatisés, images Docker identifiées par le SHA du commit, tests de démarrage des images avant publication dans GHCR et contrôles après déploiement.
 
-**Stack :** JavaScript ESM · TypeScript · Node.js · NestJS · React · Vite · Prisma · PostgreSQL · WebSocket · Search Console · GA4 · PageSpeed Insights · Google Ads · SerpAPI/OpenSERP · Docker · GitHub Actions
+**Stack :** JavaScript ESM · TypeScript · Node.js · NestJS · React · Vite · Prisma · PostgreSQL · WebSocket · OpenAI API · Search Console · GA4 · PageSpeed Insights · Google Ads · SerpAPI/OpenSERP · Docker · GitHub Actions
 
 [Site](https://masterflow.dev)
 
